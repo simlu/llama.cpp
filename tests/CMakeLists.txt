@@ -276,6 +276,13 @@ if (NOT LLAMA_SANITIZE_ADDRESS AND NOT GGML_SCHED_NO_REALLOC)
   # TODO: repair known memory leaks
   llama_build_and_test(test-opt.cpp)
 endif()
+if (NOT LLAMA_USE_SYSTEM_GGML)
+    llama_build(test-moe-cache.cpp)
+    llama_test(test-moe-cache LABEL "main;backend")
+    set_tests_properties(test-moe-cache PROPERTIES TIMEOUT 120)
+endif()
+
+llama_build_and_test(test-moe-cache-fit.cpp)
 
 # TODO: make this test (and others) not link `libllama` as it is not needed [TAG_TESTS_LLAMA_LINK]
 llama_build(test-backend-ops.cpp)
