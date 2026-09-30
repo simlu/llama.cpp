@@ -1314,6 +1314,12 @@ static cmd_params parse_cmd_params(int argc, char ** argv) {
     if (params.no_host.empty()) {
         params.no_host = cmd_params_defaults.no_host;
     }
+    if (params.n_threads.empty()) {
+        params.n_threads = cmd_params_defaults.n_threads;
+    }
+    if (params.cpu_mask.empty()) {
+        params.cpu_mask = cmd_params_defaults.cpu_mask;
+    }
     if (params.cpu_strict.empty()) {
         params.cpu_strict = cmd_params_defaults.cpu_strict;
     }
